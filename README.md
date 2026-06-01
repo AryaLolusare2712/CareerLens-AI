@@ -1,4 +1,4 @@
-# 🚀 CareerLens AI
+#  CareerLens AI
 
 ### AI Opportunity Recommendation & Talent Matchmaking Platform
 
@@ -18,7 +18,7 @@ Helping students discover better opportunities while enabling smarter recruiter 
 
 ---
 
-## 🌍 Problem Statement
+##  Problem Statement
 
 Students often struggle to find opportunities that genuinely match their:
 
@@ -45,18 +45,18 @@ At the same time, recruiters face:
 
 ---
 
-## 💡 What is CareerLens AI?
+##  What is CareerLens AI?
 
 CareerLens AI is an **AI-powered career intelligence platform** designed for:
 
-### 🎓 Students
+###  Students
 
 * Discover opportunities
 * Analyze resume strength
 * Identify skill gaps
 * Improve career readiness
 
-### 🏢 Recruiters
+###  Recruiters
 
 * Discover relevant candidates
 * Reduce screening effort
@@ -69,9 +69,9 @@ Instead of functioning as just another job board, CareerLens AI acts as an:
 
 ---
 
-## ✨ Core Features
+##  Core Features
 
-### 📄 AI Resume Intelligence
+###  AI Resume Intelligence
 
 Upload:
 
@@ -89,7 +89,7 @@ AI extracts:
 
 ---
 
-### 🎯 Opportunity Recommendation Engine
+###  Opportunity Recommendation Engine
 
 Recommend:
 
@@ -108,7 +108,7 @@ Powered by:
 
 ---
 
-### 🧠 Skill Gap Detection
+###  Skill Gap Detection
 
 CareerLens AI identifies:
 
@@ -123,7 +123,7 @@ Learn Docker + FastAPI → Match could improve to 88%
 
 ---
 
-### 🤝 Recruiter Matchmaking
+###  Recruiter Matchmaking
 
 Recruiters can:
 
@@ -143,9 +143,9 @@ Filters include:
 
 ---
 
-## 📸 Application Preview
+##  Application Preview
 
-### 🔐 Login & Authentication
+###  Login & Authentication
 
 <p align="center">
 <img src="assets/login-page.png" width="900">
@@ -153,7 +153,7 @@ Filters include:
 
 ---
 
-### 🎓 Student Portal
+###  Student Portal
 
 <p align="center">
 <img src="assets/student-portal.png" width="900">
@@ -168,7 +168,7 @@ Features:
 
 ---
 
-### 🏢 Recruiter Dashboard
+###  Recruiter Dashboard
 
 <p align="center">
 <img src="assets/recruiter-dashboard.png" width="900">
@@ -183,7 +183,7 @@ Features:
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 
@@ -220,7 +220,7 @@ Features:
 
 ---
 
-## 🏗️ System Architecture
+##  System Architecture
 
 ```text
 Resume Upload
@@ -242,7 +242,7 @@ Recruiter Screening + Analytics
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 backend/
@@ -266,7 +266,7 @@ README.md
 
 ---
 
-## ⚙️ Installation
+##  Installation
 
 ### 1. Clone Repository
 
@@ -299,7 +299,7 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Running CareerLens AI
+##  Running CareerLens AI
 
 ### Backend
 
@@ -317,7 +317,7 @@ Supports **demo mode** when backend is unavailable.
 
 ---
 
-## 🔑 Gemini Setup (Optional)
+##  Gemini Setup (Optional)
 
 Create:
 
@@ -339,7 +339,7 @@ Used for:
 
 ---
 
-## 🧪 Demo Accounts
+##  Demo Accounts
 
 ### Student
 
@@ -357,7 +357,7 @@ recruiter123
 
 ---
 
-## 📈 Future Roadmap
+##  Future Roadmap
 
 * Live opportunity scraping
 * LinkedIn/GitHub integration
@@ -369,7 +369,7 @@ recruiter123
 
 ---
 
-## 🎯 Vision
+##  Vision
 
 CareerLens AI aims to become:
 
@@ -377,11 +377,3 @@ CareerLens AI aims to become:
 
 ---
 
-## 👨‍💻 Author
-
-### Arya Lolusare
-
-AI • LLM • Recommendation Systems • Full-Stack Development
-
-GitHub:
-https://github.com/AryaLolusare2712
