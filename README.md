@@ -45,11 +45,11 @@ GEMINI_API_KEY=your_key_here
 
 ```text
 backend/
-  main.py              FastAPI app and API routes
-  recommender.py       Matching, ranking, and skill-gap logic
-  resume_parser.py     PDF/DOCX/TXT extraction helpers
+  ├──main.py              FastAPI app and API routes
+  ├──recommender.py       Matching, ranking, and skill-gap logic
+  └──resume_parser.py     PDF/DOCX/TXT extraction helpers
 data/
-  opportunities.csv    Demo opportunity catalog
+  └──opportunities.csv    Demo opportunity catalog
 streamlit_app.py       Streamlit frontend
 requirements.txt       Python dependencies
 ```
