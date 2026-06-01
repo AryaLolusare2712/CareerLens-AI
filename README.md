@@ -197,7 +197,7 @@ README.md
 ## 1. Clone Repository
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/AryaLolusare2712/CareerLens-AI
 cd CareerLens-AI
 ```
 
