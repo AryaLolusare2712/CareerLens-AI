@@ -1,0 +1,9 @@
+id,title,organization,type,location,mode,skills,description,deadline
+1,AI Research Internship,NeuroBridge Labs,Internship,Bengaluru,Hybrid,"python,machine learning,nlp,transformers,pandas","Work on NLP prototypes, document classifiers, and model evaluation pipelines.",2026-07-15
+2,Frontend Streamlit Developer,DataVista Studio,Internship,Remote,Remote,"python,streamlit,plotly,pandas,ui design","Build internal analytics dashboards and interactive data products with Streamlit.",2026-07-30
+3,Campus Hackathon: Smart India BuildFest,Innovation Cell,Hackathon,Delhi,Onsite,"python,fastapi,postgresql,ai,teamwork","Build an AI-enabled civic tech prototype in 36 hours with mentorship.",2026-08-10
+4,Data Science Scholarship,Future Skills Foundation,Scholarship,India,Online,"python,statistics,scikit-learn,data visualization","Scholarship for students building applied machine learning projects.",2026-08-20
+5,Backend API Intern,CloudNest,Internship,Pune,Hybrid,"fastapi,sqlalchemy,postgresql,jwt,python","Create secure APIs for dashboards, authentication, and recommendation workflows.",2026-07-25
+6,ML Recommendation Engineer,SkillMatch AI,Job,Remote,Remote,"sentence-transformers,faiss,cosine similarity,numpy,python","Improve semantic matching and ranking for career recommendation products.",2026-09-01
+7,Resume NLP Project Fellowship,Open Careers Lab,Fellowship,Remote,Remote,"spacy,nltk,pymupdf,nlp,python","Extract structured candidate profiles from resumes and evaluate parsing quality.",2026-08-05
+8,Recruiter Analytics Intern,HireFlow,Internship,Mumbai,Hybrid,"plotly,pandas,sql,analytics,communication","Create funnel reports, candidate fit dashboards, and recruiter performance metrics.",2026-07-18
