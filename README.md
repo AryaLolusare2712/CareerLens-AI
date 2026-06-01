@@ -147,7 +147,7 @@ Possible filters:
 - pdfplumber
 
 ## Database
-- PostgreSQL / MongoDB
+- PostgreSQL
 
 ---
 
