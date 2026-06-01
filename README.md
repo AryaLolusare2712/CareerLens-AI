@@ -1,7 +1,12 @@
-#  CareerLens AI  
+# 🚀 CareerLens AI
+
 ### AI Opportunity Recommendation & Talent Matchmaking Platform
 
-> Helping students discover better opportunities and enabling smarter recruiter matchmaking through AI.
+<p align="center">
+Helping students discover better opportunities while enabling smarter recruiter matchmaking through AI.
+</p>
+
+<p align="center">
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![Streamlit](https://img.shields.io/badge/Frontend-Streamlit-red)
@@ -9,83 +14,101 @@
 ![AI](https://img.shields.io/badge/AI-Gemini%20%7C%20NLP-purple)
 ![Status](https://img.shields.io/badge/Status-Active-success)
 
----
-
-#  Problem Statement
-
-Students often struggle to find opportunities that genuinely match their skills, interests, and eligibility.
-
-Most existing platforms focus mainly on listings and broad discovery, leaving students uncertain about:
-
-- What opportunities they are eligible for
-- Which skills they are missing
-- Which internships or hackathons fit them best
-- How to improve their selection chances
-
-At the same time, recruiters and startups face challenges such as:
-
-- Large applicant pools
-- Manual screening
-- Resume overload
-- Weak candidate-job matching
-
-**CareerLens AI** aims to solve both sides of this problem through AI-powered recommendation and talent matchmaking.
+</p>
 
 ---
 
-#  What is CareerLens AI?
+## 🌍 Problem Statement
 
-**CareerLens AI** is an AI-powered platform designed for both:
+Students often struggle to find opportunities that genuinely match their:
 
-###  Students
-Discover personalized opportunities and understand career readiness.
+* Skills
+* Interests
+* Eligibility
+* Career goals
 
-###  Recruiters
-Identify and screen better-fit student talent faster.
+Most platforms focus mainly on **listings and broad discovery**, leaving students uncertain about:
 
-Instead of functioning as just another listing platform, CareerLens AI acts as a **career intelligence and matchmaking system**.
+* What opportunities they qualify for
+* Which skills they are missing
+* Which opportunities best fit their profile
+* How to improve their chances
+
+At the same time, recruiters face:
+
+* Large applicant pools
+* Manual screening
+* Resume overload
+* Weak candidate-job matching
+
+**CareerLens AI** bridges both gaps through **AI-powered opportunity discovery and talent matchmaking.**
 
 ---
 
-#  Core Features
+## 💡 What is CareerLens AI?
 
-##  AI Resume Intelligence
+CareerLens AI is an **AI-powered career intelligence platform** designed for:
+
+### 🎓 Students
+
+* Discover opportunities
+* Analyze resume strength
+* Identify skill gaps
+* Improve career readiness
+
+### 🏢 Recruiters
+
+* Discover relevant candidates
+* Reduce screening effort
+* Improve hiring quality
+* Match talent intelligently
+
+Instead of functioning as just another job board, CareerLens AI acts as an:
+
+> AI-powered career intelligence and matchmaking ecosystem.
+
+---
+
+## ✨ Core Features
+
+### 📄 AI Resume Intelligence
 
 Upload:
 
-- PDF
-- DOCX
-- TXT
+* PDF
+* DOCX
+* TXT
 
 AI extracts:
 
-- Skills
-- Education
-- Projects
-- Experience
-- Profile summary
+* Skills
+* Education
+* Projects
+* Experience
+* Profile summary
 
 ---
 
-##  Opportunity Recommendation Engine
+### 🎯 Opportunity Recommendation Engine
 
 Recommend:
 
-- Internships
-- Jobs
-- Hackathons
-- Scholarships
-- Open-source programs
+* Internships
+* Jobs
+* Hackathons
+* Scholarships
+* Open-source programs
+* Fellowships
 
-using:
+Powered by:
 
-- Semantic similarity
-- NLP embeddings
-- Hybrid recommendation logic
+* NLP embeddings
+* Semantic similarity
+* Hybrid recommendation logic
 
 ---
 
-##  Skill Gap Detection
+### 🧠 Skill Gap Detection
 
 CareerLens AI identifies:
 
@@ -100,80 +123,126 @@ Learn Docker + FastAPI → Match could improve to 88%
 
 ---
 
-##  Recruiter Matchmaking
+### 🤝 Recruiter Matchmaking
 
 Recruiters can:
 
-- Discover talent faster
-- Reduce screening effort
-- Filter intelligently
-- View AI-generated fit scores
+* Discover talent faster
+* Reduce screening effort
+* Filter candidates intelligently
+* View AI-generated fit scores
 
-Possible filters:
+Filters include:
 
-- Graduation year
-- Skill stack
-- Internship duration
-- Availability
-- College tier
-- Domain
-
----
-
-#  Tech Stack
-
-## Frontend
-- Streamlit
-- Plotly
-
-## Backend
-- FastAPI
-- Python
-
-## AI / NLP
-- Gemini API
-- Sentence Transformers
-- spaCy
-- Scikit-learn
-
-## Recommendation Engine
-- FAISS
-- Cosine Similarity
-- TF-IDF fallback
-
-## Resume Parsing
-- PyMuPDF
-- python-docx
-- pdfplumber
-
-## Database
-- PostgreSQL
+* Graduation year
+* Skill stack
+* Internship duration
+* Availability
+* College tier
+* Domain
 
 ---
 
-#  System Architecture
+## 📸 Application Preview
+
+### 🔐 Login & Authentication
+
+<p align="center">
+<img src="assets/login-page.png" width="900">
+</p>
+
+---
+
+### 🎓 Student Portal
+
+<p align="center">
+<img src="assets/student-portal.png" width="900">
+</p>
+
+Features:
+
+* Opportunity browsing
+* Resume matching
+* Skill gap analysis
+* Personalized recommendations
+
+---
+
+### 🏢 Recruiter Dashboard
+
+<p align="center">
+<img src="assets/recruiter-dashboard.png" width="900">
+</p>
+
+Features:
+
+* Candidate search
+* Match scoring
+* Hiring analytics
+* Opportunity posting
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* Streamlit
+* Plotly
+
+### Backend
+
+* FastAPI
+* Python
+
+### AI / NLP
+
+* Gemini API
+* Sentence Transformers
+* spaCy
+* Scikit-learn
+
+### Recommendation Engine
+
+* FAISS
+* Cosine Similarity
+* TF-IDF fallback
+
+### Resume Parsing
+
+* PyMuPDF
+* python-docx
+* pdfplumber
+
+### Database
+
+* PostgreSQL / MongoDB
+
+---
+
+## 🏗️ System Architecture
 
 ```text
 Resume Upload
-      ↓
+        ↓
 Resume Parsing
-      ↓
+        ↓
 Skill Extraction
-      ↓
+        ↓
 Embedding Generation
-      ↓
+        ↓
 Opportunity Database
-      ↓
+        ↓
 AI Matching Engine
-      ↓
+        ↓
 Fit Score + Recommendations
-      ↓
+        ↓
 Recruiter Screening + Analytics
 ```
 
 ---
 
-#  Project Structure
+## 📂 Project Structure
 
 ```text
 backend/
@@ -185,6 +254,11 @@ backend/
 data/
 ├── opportunities.csv
 │
+assets/
+├── login-page.png
+├── student-portal.png
+└── recruiter-dashboard.png
+│
 streamlit_app.py
 requirements.txt
 README.md
@@ -192,32 +266,32 @@ README.md
 
 ---
 
-#  Installation
+## ⚙️ Installation
 
-## 1. Clone Repository
+### 1. Clone Repository
 
 ```bash
-git clone https://github.com/AryaLolusare2712/CareerLens-AI
+git clone <repo-url>
 cd CareerLens-AI
 ```
 
-## 2. Create Virtual Environment
+### 2. Create Virtual Environment
 
-### Windows
+#### Windows
 
 ```bash
 python -m venv .venv
 .\.venv\Scripts\activate
 ```
 
-### Linux / Mac
+#### Linux / Mac
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-## 3. Install Dependencies
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -225,25 +299,25 @@ pip install -r requirements.txt
 
 ---
 
-#  Running CareerLens AI
+## ▶️ Running CareerLens AI
 
-## Backend
+### Backend
 
 ```bash
 uvicorn backend.main:app --reload --port 8000
 ```
 
-## Frontend
+### Frontend
 
 ```bash
 streamlit run streamlit_app.py
 ```
 
-The platform also supports **demo mode** if the backend is unavailable.
+Supports **demo mode** when backend is unavailable.
 
 ---
 
-#  Gemini Setup (Optional)
+## 🔑 Gemini Setup (Optional)
 
 Create:
 
@@ -259,25 +333,43 @@ GEMINI_API_KEY=your_api_key
 
 Used for:
 
-- AI summaries
-- Career guidance
-- Personalized recommendations
+* AI summaries
+* Career guidance
+* Personalized recommendations
 
 ---
 
-#  Future Roadmap
+## 🧪 Demo Accounts
 
-- Live opportunity scraping
-- LinkedIn/GitHub integration
-- Recruiter dashboard
-- Resume builder
-- AI screening workflows
-- Interview preparation
-- Multi-agent recommendation system
+### Student
+
+```text
+student@example.com
+student123
+```
+
+### Recruiter
+
+```text
+recruiter@example.com
+recruiter123
+```
 
 ---
 
-#  Vision
+## 📈 Future Roadmap
+
+* Live opportunity scraping
+* LinkedIn/GitHub integration
+* Resume builder
+* AI interview preparation
+* Automated screening workflows
+* Multi-agent recommendation system
+* Career roadmap generation
+
+---
+
+## 🎯 Vision
 
 CareerLens AI aims to become:
 
@@ -285,9 +377,9 @@ CareerLens AI aims to become:
 
 ---
 
-#  Author
+## 👨‍💻 Author
 
-**Arya Lolusare**
+### Arya Lolusare
 
 AI • LLM • Recommendation Systems • Full-Stack Development
 
