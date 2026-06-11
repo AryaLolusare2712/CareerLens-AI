@@ -50,8 +50,16 @@ def main() -> None:
         else:
             page = option_menu(
                 "Recruiter Portal",
-                ["Recruiter Home", "Candidate Search", "Post Opportunity", "Hiring Analytics"],
-                icons=["briefcase", "people", "plus-square", "bar-chart"],
+                [
+                    "Recruiter Home",
+                    "Candidate Search",
+                    "Shortlist Board",
+                    "Job Match",
+                    "AI Summary",
+                    "Post Opportunity",
+                    "Hiring Analytics",
+                ],
+                icons=["briefcase", "people", "kanban", "bullseye", "stars", "plus-square", "bar-chart"],
                 default_index=0,
             )
 
@@ -67,6 +75,12 @@ def main() -> None:
             render_recruiter_home()
         elif page == "Candidate Search":
             render_recruiter_portal()
+        elif page == "Shortlist Board":
+            render_shortlist_board()
+        elif page == "Job Match":
+            render_job_candidate_matching()
+        elif page == "AI Summary":
+            render_ai_candidate_summary()
         elif page == "Post Opportunity":
             render_post_opportunity()
         else:
@@ -304,7 +318,7 @@ def render_student_skill_gaps() -> None:
 
 
 def render_recruiter_home() -> None:
-    candidates = sample_candidates()
+    candidates = get_recruiter_candidates()
     opportunities = pd.DataFrame(load_opportunities())
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Active Candidates", len(candidates))
@@ -324,7 +338,7 @@ def render_recruiter_home() -> None:
 
 def render_recruiter_portal() -> None:
     st.subheader("Candidate Search")
-    candidates = sample_candidates()
+    candidates = get_recruiter_candidates()
     col1, col2, col3 = st.columns([0.5, 0.25, 0.25])
     with col1:
         keyword = st.text_input("Search skills or role", placeholder="python, fastapi, nlp...")
@@ -344,6 +358,84 @@ def render_recruiter_portal() -> None:
         filtered = filtered[filtered["status"] == status]
 
     st.dataframe(filtered, use_container_width=True, hide_index=True)
+
+
+def render_shortlist_board() -> None:
+    st.subheader("Candidate Shortlist Board")
+    st.caption("Move candidates through the hiring pipeline and track their current stage.")
+    candidates = get_recruiter_candidates()
+    stages = ["New", "Shortlisted", "Interview", "Selected", "Rejected"]
+
+    candidate_name = st.selectbox("Candidate", candidates["name"].tolist())
+    current_status = candidates.loc[candidates["name"] == candidate_name, "status"].iloc[0]
+    new_status = st.selectbox("Move to stage", stages, index=stages.index(current_status))
+
+    if st.button("Update Stage", type="primary"):
+        update_candidate_status(candidate_name, new_status)
+        st.success(f"{candidate_name} moved to {new_status}.")
+        st.rerun()
+
+    columns = st.columns(len(stages))
+    for column, stage in zip(columns, stages):
+        with column:
+            stage_candidates = candidates[candidates["status"] == stage]
+            st.markdown(f"**{stage}**")
+            st.metric("Count", len(stage_candidates))
+            for _, candidate in stage_candidates.iterrows():
+                with st.container(border=True):
+                    st.write(candidate["name"])
+                    st.caption(candidate["target_role"])
+                    st.progress(int(candidate["fit_score"]))
+                    st.caption(f"Fit: {candidate['fit_score']}%")
+
+
+def render_job_candidate_matching() -> None:
+    st.subheader("Job-to-Candidate Matching")
+    opportunities = pd.DataFrame(load_opportunities())
+    candidates = get_recruiter_candidates()
+
+    selected_title = st.selectbox("Select opportunity", opportunities["title"].tolist())
+    selected_job = opportunities[opportunities["title"] == selected_title].iloc[0]
+    required_skills = split_skills(selected_job["skills"])
+
+    st.write(selected_job["description"])
+    st.caption(f"Required skills: {', '.join(sorted(required_skills))}")
+
+    ranked = candidates.copy()
+    ranked["match_score"] = ranked["skills"].apply(lambda value: calculate_skill_match(split_skills(value), required_skills))
+    ranked["matched_skills"] = ranked["skills"].apply(
+        lambda value: ", ".join(sorted(split_skills(value) & required_skills)) or "No direct match"
+    )
+    ranked["missing_skills"] = ranked["skills"].apply(
+        lambda value: ", ".join(sorted(required_skills - split_skills(value))) or "None"
+    )
+    ranked = ranked.sort_values(["match_score", "fit_score"], ascending=False)
+
+    st.dataframe(
+        ranked[["name", "target_role", "status", "fit_score", "match_score", "matched_skills", "missing_skills"]],
+        use_container_width=True,
+        hide_index=True,
+    )
+
+
+def render_ai_candidate_summary() -> None:
+    st.subheader("AI Candidate Summary")
+    candidates = get_recruiter_candidates()
+    candidate_name = st.selectbox("Choose candidate", candidates["name"].tolist())
+    candidate = candidates[candidates["name"] == candidate_name].iloc[0].to_dict()
+
+    left, right = st.columns([0.58, 0.42])
+    with left:
+        st.write(f"**Target role:** {candidate['target_role']}")
+        st.write(f"**Skills:** {candidate['skills']}")
+        st.write(f"**Status:** {candidate['status']}")
+        st.metric("Fit Score", f"{candidate['fit_score']}%")
+    with right:
+        st.info(generate_candidate_summary(candidate))
+
+    st.subheader("Interview Focus")
+    focus = build_interview_focus(candidate)
+    st.dataframe(focus, use_container_width=True, hide_index=True)
 
 
 def render_post_opportunity() -> None:
@@ -382,7 +474,7 @@ def render_post_opportunity() -> None:
 def render_analytics() -> None:
     st.subheader("Hiring Analytics")
     opportunities = pd.DataFrame(load_opportunities())
-    candidates = sample_candidates()
+    candidates = get_recruiter_candidates()
     skill_counts = (
         opportunities["skills"]
         .str.split(",")
@@ -403,6 +495,19 @@ def render_analytics() -> None:
         st.plotly_chart(fig, use_container_width=True)
 
 
+def get_recruiter_candidates() -> pd.DataFrame:
+    if "recruiter_candidates" not in st.session_state:
+        st.session_state["recruiter_candidates"] = sample_candidates().to_dict(orient="records")
+    return pd.DataFrame(st.session_state["recruiter_candidates"])
+
+
+def update_candidate_status(candidate_name: str, status: str) -> None:
+    for candidate in st.session_state.get("recruiter_candidates", []):
+        if candidate["name"] == candidate_name:
+            candidate["status"] = status
+            break
+
+
 def sample_candidates() -> pd.DataFrame:
     return pd.DataFrame(
         [
@@ -412,6 +517,7 @@ def sample_candidates() -> pd.DataFrame:
                 "fit_score": 91,
                 "skills": "python, nlp, pandas",
                 "status": "Shortlisted",
+                "experience": "Built NLP classifiers and resume parsing projects using Python.",
             },
             {
                 "name": "Mira Iyer",
@@ -419,6 +525,7 @@ def sample_candidates() -> pd.DataFrame:
                 "fit_score": 86,
                 "skills": "streamlit, plotly, sql",
                 "status": "Interview",
+                "experience": "Created analytics dashboards with Streamlit, Plotly, and SQL data sources.",
             },
             {
                 "name": "Kabir Khan",
@@ -426,6 +533,7 @@ def sample_candidates() -> pd.DataFrame:
                 "fit_score": 82,
                 "skills": "fastapi, postgresql, jwt",
                 "status": "New",
+                "experience": "Developed FastAPI endpoints, JWT auth flows, and PostgreSQL schemas.",
             },
             {
                 "name": "Diya Mehta",
@@ -433,9 +541,53 @@ def sample_candidates() -> pd.DataFrame:
                 "fit_score": 78,
                 "skills": "pandas, plotly, statistics",
                 "status": "New",
+                "experience": "Analyzed datasets, built charts, and prepared business insight reports.",
             },
         ]
     )
+
+
+def split_skills(value: str) -> set[str]:
+    return {skill.strip().lower() for skill in str(value).split(",") if skill.strip()}
+
+
+def calculate_skill_match(candidate_skills: set[str], required_skills: set[str]) -> int:
+    if not required_skills:
+        return 0
+    return round(len(candidate_skills & required_skills) / len(required_skills) * 100)
+
+
+def generate_candidate_summary(candidate: dict) -> str:
+    skills = split_skills(candidate["skills"])
+    strongest = ", ".join(sorted(skills)[:3])
+    if candidate["fit_score"] >= 85:
+        decision = "Strong candidate for immediate shortlist or interview."
+    elif candidate["fit_score"] >= 75:
+        decision = "Good candidate, but validate project depth before moving ahead."
+    else:
+        decision = "Needs closer screening before shortlisting."
+    return (
+        f"{candidate['name']} is targeting {candidate['target_role']} with strengths in {strongest}. "
+        f"{candidate['experience']} {decision}"
+    )
+
+
+def build_interview_focus(candidate: dict) -> pd.DataFrame:
+    skills = sorted(split_skills(candidate["skills"]))
+    questions = [
+        {
+            "area": skill,
+            "question": f"Describe one project where you used {skill} and what result it produced.",
+        }
+        for skill in skills[:4]
+    ]
+    questions.append(
+        {
+            "area": "Role fit",
+            "question": f"Why are you a strong fit for the {candidate['target_role']} role?",
+        }
+    )
+    return pd.DataFrame(questions)
 
 
 if __name__ == "__main__":
